@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tartışma Forumları - Modern İlan Sitesi</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="global-header">
+        <div class="header-container">
+            <a class="header-logo" href="index.html">
+                <span class="peace-symbol">☮</span>
+                <span class="logo-text">craigslist</span>
+            </a>
+
+            <div class="search-container">
+                <input type="text" placeholder="Forumlarda ara..." class="search-input" />
+                <span class="search-icon">🔍</span>
+            </div>
+
+            <div class="header-actions">
+                <a class="post-ad-btn" href="ilan-ver.html">İlan Ver</a>
+                <a class="action-btn" href="hesap.html">
+                    <span>👤</span>
+                    <span>Hesap</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+
+        <aside class="leftbar">
+            <div class="sidebar-card">
+                <h4 class="card-title">📅 Etkinlik Takvimi</h4>
+                <table id="cal" class="calendar"></table>
+            </div>
+
+            <div class="sidebar-card">
+                <ul class="link-list">
+                    <li><a href="#">Yardım, SSS, Hukuki Yaptırım</a></li>
+                    <li><a href="#">Sahtekarlıktan Kaçının</a></li>
+                    <li><a href="#">Kişisel Güvenliğiniz İçin</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-card">
+                <ul class="link-list">
+                    <li><a href="#">Craigslist Hakkında</a></li>
+                    <li><a href="#">Craigslist'in En İyileri</a></li>
+                    <li><a href="#">What's New</a></li>
+                    <li><a href="#">Sistem Durumu</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-card">
+                <h4 class="card-title">💝 Craigslist Charitable</h4>
+                <div class="charitable-icons">
+                    <span class="animal-icon">🐷</span>
+                    <span class="animal-icon">🐔</span>
+                    <span class="animal-icon">🐟</span>
+                    <span class="animal-icon">🐱</span>
+                </div>
+                <h4 class="card-title">Craig Newmark Philanthropies</h4>
+            </div>
+        </aside>
+
+        <section class="center">
+
+            <div class="category-card">
+
+                <h3 class="category-title">💬 Tartışma Forumları</h3>
+
+                <div class.job-filters"
+                    style="display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 30px; padding: 25px; background: var(--gray-dark); border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);">
+
+                    <select class="lang-select" style="flex-basis: 300px; flex-grow: 1;">
+                        <option value="">Tüm Forumlar</option>
+                        <option value="politika">Politika</option>
+                        <option value="teknoloji">Bilgisayar</option>
+                        <option value="yemek">Yemek</option>
+                        <option value="spor">Spor</option>
+                        <option value="felsefe">Felsefe</option>
+                    </select>
+
+                    <a href="#" class="post-ad-btn"
+                        style="flex-basis: 200px; flex-grow: 1; text-align: center; box-sizing: border-box;">
+                        + YENİ KONU AÇ
+                    </a>
+                </div>
+
+                <div class="job-listings-container">
+
+                    <div class="job-listing-item"
+                        style="background: var(--gray-dark); padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 4px solid var(--red); transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 10px;">
+                            <h4 style="font-size: 18px; font-weight: 700;">
+                                <a href="thread-detail.html" style="color: var(--white);">Gelecek 10 yılda hangi
+                                    teknoloji hayatımızı değiştirecek?</a>
+                            </h4>
+                            <span style="font-size: 14px; color: var(--gray-light); flex-shrink: 0;">Son Yorum: 2dk
+                                önce</span>
+                        </div>
+                        <div style="font-size: 14px; color: var(--gray-light);">
+                            <span>Forum: 💬 Bilgisayar</span> |
+                            <span>Yazan: teknoguru</span> |
+                            <span>Cevaplar: 125</span>
+                        </div>
+                    </div>
+
+                    <div class="job-listing-item"
+                        style="background: var(--gray-dark); padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 4px solid var(--red); transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 10px;">
+                            <h4 style="font-size: 18px; font-weight: 700;">
+                                <a href="thread-detail.html" style="color: var(--white);">Evde en iyi ekşi mayalı ekmek
+                                    nasıl yapılır?</a>
+                            </h4>
+                            <span style="font-size: 14px; color: var(--gray-light); flex-shrink: 0;">Son Yorum: 15dk
+                                önce</span>
+                        </div>
+                        <div style="font-size: 14px; color: var(--gray-light);">
+                            <span>Forum: 💬 Yemek</span> |
+                            <span>Yazan: firinci_bey</span> |
+                            <span>Cevaplar: 42</span>
+                        </div>
+                    </div>
+
+                    <div class="job-listing-item"
+                        style="background: var(--gray-dark); padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 4px solid var(--red); transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 10px;">
+                            <h4 style="font-size: 18px; font-weight: 700;">
+                                <a href="thread-detail.html" style="color: var(--white);">Bu seneki şampiyonluk yarışı
+                                    hakkında düşünceleriniz...</a>
+                            </h4>
+                            <span style="font-size: 14px; color: var(--gray-light); flex-shrink: 0;">Son Yorum: 30dk
+                                önce</span>
+                        </div>
+                        <div style="font-size: 14px; color: var(--gray-light);">
+                            <span>Forum: 💬 Spor</span> |
+                            <span>Yazan: fanatik1905</span> |
+                            <span>Cevaplar: 301</span>
+                        </div>
+                    </div>
+
+                    <div class="job-listing-item"
+                        style="background: var(--gray-dark); padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 4px solid var(--red); transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 10px;">
+                            <h4 style="font-size: 18px; font-weight: 700;">
+                                <a href="thread-detail.html" style="color: var(--white);">Okuduğunuz en sarsıcı felsefe
+                                    kitabı hangisiydi?</a>
+                            </h4>
+                            <span style="font-size: 14px; color: var(--gray-light); flex-shrink: 0;">Son Yorum: 1 saat
+                                önce</span>
+                        </div>
+                        <div style="font-size: 14px; color: var(--gray-light);">
+                            <span>Forum: 💬 Felsefe</span> |
+                            <span>Yazan: dusunur</span> |
+                            <span>Cevaplar: 88</span>
+                        </div>
+                    </div>
+
+                    <div class="pagination" style="text-align: center; margin-top: 40px;">
+                        <a href="#"
+                            style="padding: 10px 18px; background: var(--red); color: var(--white); border-radius: 5px; font-weight: 700; margin: 0 5px; text-decoration: none; box-shadow: var(--shadow);">1</a>
+                        <a href="#"
+                            style="padding: 10px 18px; background: var(--gray-medium); color: var(--white); border-radius: 5px; font-weight: 700; margin: 0 5px; text-decoration: none;">2</a>
+                        <a href="#"
+                            style="padding: 10px 18px; background: var(--gray-medium); color: var(--white); border-radius: 5px; font-weight: 700; margin: 0 5px; text-decoration: none;">3</a>
+                        ...
+                        <a href="#"
+                            style="padding: 10px 18px; background: var(--gray-medium); color: var(--white); border-radius: 5px; font-weight: 700; margin: 0 5px; text-decoration: none;">12</a>
+                        <a href="#"
+                            style="padding: 10px 18px; background: var(--gray-medium); color: var(--white); border-radius: 5px; font-weight: 700; margin: 0 5px; text-decoration: none;">Sonraki
+                            »</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <aside class="rightbar">
+            <div class="sidebar-card">
+                <h5 class="card-title">🌐 Dil Seçimi</h5>
+                <div id="langlinks">
+                    <select name="lang" id="chlang" class="js-only lang-select">
+                        <option value="?lang=da&amp;setlang=1">dansk</option>
+                        <option value="?lang=de&amp;setlang=1">deutsch</option>
+                        <option value="?lang=en&amp;setlang=1">english</option>
+                        <option value="?lang=es&amp;setlang=1">español</option>
+                        <option value="?lang=fr&amp;setlang=1">français</option>
+                        <option value="?lang=it&amp;setlang=1">italiano</option>
+                        <option value="?lang=pt&amp;setlang=1">português</option>
+                        <option value="?lang=fi&amp;setlang=1">suomi</option>
+                        <option value="?lang=sv&amp;setlang=1">svenska</option>
+                        <option value="?lang=vi&amp;setlang=1">tiếng việt</option>
+                        <option selected value="?lang=tr&amp;setlang=1">türkçe</option>
+                        <option value="?lang=ru&amp;setlang=1">русский</option>
+                        <option value="?lang=zh&amp;setlang=1">中文</option>
+                        <option value="?lang=ja&amp;setlang=1">日本語</option>
+                        <option value="?lang=ko&amp;setlang=1">한국말</option>
+                    </select>
+                </div>
+            </div>
+            <div class="sidebar-card">
+                <h5 class="card-title">🌍 Avrupa</h5>
+                <ul class="location-grid link-list">
+                    <li><a href="#">Amsterdam</a></li>
+                    <li><a href="#">Berlin</a></li>
+                    <li><a href="#">Brüksel</a></li>
+                    <li><a href="#">Budapeşte</a></li>
+                    <li><a href="#">Cote d'Azur</a></li>
+                    <li><a href="#">Dublin</a></li>
+                    <li><a href="#">Edinburgh</a></li>
+                    <li><a href="#">Floransa</a></li>
+                    <li><a href="#">Kopenhag</a></li>
+                    <li><a href="#">Londra</a></li>
+                    <li><a href="#">Münih</a></li>
+                    <li><a href="#">Oslo</a></li>
+                    <li><a href="#">Oxford</a></li>
+                    <li><a href="#">Paris</a></li>
+                    <li><a href="#">Prag</a></li>
+                    <li><a href="#">Roma</a></li>
+                    <li><a href="#">Stokholm</a></li>
+                    <li><a href="#">Venedik/Veneto</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-card">
+                <h5 class="card-title">Amerika/Kanada</h5>
+            </div>
+
+            <div class="sidebar-card">
+                <h5 class="card-title">CL Global</h5>
+            </div>
+
+            <div class="job-button">Ufak İşler</div>
+            <div class="job-button">Özgeçmişler</div>
+        </aside>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#">Yardım</a>
+                <a href="#">Güvenlik</a>
+                <a href="#">Gizlilik</a>
+                <a href="#">Kurallar</a>
+                <a href="#">Hakkında</a>
+                <a href="#">App</a>
+                <a href="#">Sitemap</a>
+            </div>
+            <div class="copyright">&copy; <span id="year"></span> craigslist</div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

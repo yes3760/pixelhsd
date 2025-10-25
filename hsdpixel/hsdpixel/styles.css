@@ -1,0 +1,626 @@
+/* === 1. TEMEL AYARLAR VE RENK PALETİ === */
+:root {
+  /* Sizin sağladığınız renk paleti */
+  --black: #000000;
+  --red: #ff0006;
+  --white: #ffffff;
+
+  /* Temayı zenginleştirmek için yardımcı renkler (paletinizden) */
+  --gray-dark: #1a1a1a;
+  --gray-medium: #2a2a2a;
+  --gray-light: #e0e0e0;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Genel sıfırlama ve varsayılanlar */
+* {
+  box-sizing: border-box; /* Kutu modelini daha kolay yönetilir hale getirir */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  background-color: var(--black); /* Ana arka plan rengi */
+  color: var(--white); /* Varsayılan metin rengi */
+  line-height: 1.5;
+}
+
+a {
+  color: var(--red); /* Tüm bağlantıları kırmızı yapar */
+  text-decoration: none; /* Bağlantı altı çizgilerini kaldırır */
+}
+
+a:hover {
+  text-decoration: underline; /* Fare ile üzerine gelince alt çizgi ekler */
+}
+
+/* === 2. HEADER (ÜST BİLGİ) === */
+.global-header {
+  background-color: var(--gray-dark);
+  padding: 15px 20px;
+  border-bottom: 2px solid var(--red); /* Ayırıcı kırmızı çizgi */
+  box-shadow: var(--shadow);
+  position: sticky; /* Sayfa kaydırılsa bile üstte kalır */
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px; /* İçeriği ortalar ve sınırlar */
+  margin: 0 auto;
+}
+
+/* Logo Stilleri */
+.header-logo {
+  display: flex;
+  align-items: center;
+  color: var(--white);
+  font-weight: bold;
+}
+.header-logo:hover {
+  text-decoration: none;
+}
+
+.peace-symbol {
+  color: var(--red);
+  font-size: 2.5rem; /* 40px */
+  margin-right: 10px;
+}
+
+.logo-text {
+  font-size: 1.8rem; /* 29px */
+}
+
+/* Arama Çubuğu */
+.search-container {
+  display: flex;
+  flex-grow: 1; /* Mevcut alanı doldurur */
+  max-width: 500px;
+  background-color: var(--gray-medium);
+  border-radius: 25px; /* Yuvarlak kenarlı arama çubuğu */
+  overflow: hidden;
+  border: 1px solid var(--black);
+  margin: 0 25px;
+}
+
+.search-input {
+  border: none;
+  background: transparent;
+  padding: 12px 18px;
+  color: var(--white);
+  font-size: 1rem;
+  width: 100%; /* Arama kutusunun içini doldurur */
+}
+
+.search-input:focus {
+  outline: none; /* Tıklayınca çıkan mavi çerçeveyi kaldırır */
+}
+
+.search-input::placeholder {
+  color: var(--gray-light);
+  opacity: 0.7;
+}
+
+.search-icon {
+  padding: 12px 15px;
+  cursor: pointer;
+}
+
+/* Header Aksiyon Butonları */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Butonlar arası boşluk */
+}
+
+.post-ad-btn {
+  background-color: var(--red);
+  color: var(--white);
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-transform: uppercase; /* "İlan Ver" metnini büyük harf yapar */
+}
+
+.post-ad-btn:hover {
+  background-color: var(--white);
+  color: var(--red);
+  text-decoration: none;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* === 3. ANA İÇERİK VE 3'LÜ YERLEŞİM === */
+.main-container {
+  display: grid;
+  /* Yerleşim: 2 birim sol | 6 birim orta | 2 birim sağ 
+    Orta sütun her zaman daha geniş olacak
+  */
+  grid-template-columns: 2fr 6fr 2fr;
+  gap: 25px; /* Sütunlar arası boşluk */
+  max-width: 1400px;
+  margin: 30px auto; /* Üstten/alttan 30px, sağdan/soldan otomatik boşluk */
+  padding: 0 20px;
+}
+
+/* === 4. KENAR ÇUBUKLARI (leftbar & rightbar) === */
+.sidebar-card {
+  background-color: var(--gray-medium);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  margin-bottom: 25px; /* Mobil görünümde kartlar arası boşluk */
+}
+
+.card-title {
+
+  font-size: 16px; font-weight: 700; margin-bottom: 15px; color: var(--red); text-transform: uppercase;
+
+  letter-spacing: 1px; border-bottom: 2px solid var(--red); padding-bottom: 8px;
+
+}
+
+
+
+/* Calendar */
+
+.calendar { width: 100%; border-collapse: separate; border-spacing: 4px; }
+
+.calendar th, .calendar td { padding: 10px 5px; text-align: center; border-radius: 5px; font-size: 13px; }
+
+.calendar th { color: var(--red); font-weight: 600; padding-bottom: 10px; font-size: 11px; text-transform: uppercase; }
+
+.calendar td {
+
+  transition: all 0.2s ease; cursor: pointer; background: rgba(255, 255, 255, 0.05);
+
+  min-width: 28px; min-height: 28px;
+
+}
+
+.calendar td:hover { background: rgba(255, 6, 0, 0.3); transform: scale(1.05); } /* Hover yeni --red ile güncellendi */
+
+.calendar td.today { background: var(--red); font-weight: 700; box-shadow: 0 0 10px rgba(255, 6, 0, 0.6); color: var(--white); } /* "today" yeni --red ile güncellendi */
+
+
+
+/* boş hücreler hizalama için görünmez olsun */
+
+.calendar td.empty { background: transparent !important; cursor: default; box-shadow: none; }
+
+/* Dil seçimi */
+.lang-select {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--gray-dark);
+  color: var(--white);
+  border: 1px solid var(--black);
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+/* === 5. ORTA İÇERİK (Kategori Sayfası) === */
+.category-page-content {
+  background-color: var(--gray-medium);
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: var(--shadow);
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 25px;
+  color: var(--red);
+  font-weight: bold;
+}
+
+.category-page-title {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 2.5rem;
+  color: var(--white);
+}
+
+.category-page-description {
+  font-size: 1.1rem;
+  color: var(--gray-light);
+  line-height: 1.7;
+}
+
+/* === 6. FOOTER (ALT BİLGİ) === */
+.footer {
+  background-color: var(--gray-dark);
+  padding: 30px 20px;
+  margin-top: 40px;
+  border-top: 2px solid var(--red);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  color: var(--gray-light);
+  flex-wrap: wrap; /* Küçük ekranlarda alt satıra kaydır */
+  gap: 15px;
+}
+
+.footer-links a {
+  color: var(--gray-light);
+  margin: 0 12px;
+}
+
+.footer-links a:hover {
+  color: var(--white);
+}
+
+.copyright {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* === 7. MOBİL UYUMLULUK (RESPONSIVE) === */
+
+/* Orta boy ekranlar (Tabletler) */
+@media (max-width: 992px) {
+  .main-container {
+    /* 3 sütunlu yerleşimi tek sütuna düşür */
+    grid-template-columns: 1fr;
+  }
+
+
+
+  .search-container {
+    margin: 0 15px; /* Arama çubuğuna daha az yan boşluk */
+  }
+}
+
+/* Küçük ekranlar (Telefonlar) */
+@media (max-width: 768px) {
+  .header-container {
+    /* Header elemanlarını alt alta yığ */
+    flex-direction: column;
+    gap: 20px; /* Yığılan elemanlar arası boşluk */
+  }
+
+  .search-container {
+    width: 100%; /* Arama çubuğu tam genişlik kaplasın */
+    margin: 0;
+  }
+
+  .header-actions {
+    width: 100%;
+    justify-content: space-between; /* "İlan Ver" ve "Hesap" iki yana yaslansın */
+  }
+
+  .main-container {
+    margin-top: 20px;
+    padding: 0 10px;
+    gap: 20px;
+  }
+
+  .category-page-title {
+    font-size: 2rem; /* Başlığı biraz küçült */
+  }
+
+  .footer-content {
+    /* Footer içeriğini alt alta ortala */
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
+} /* ================================================= */
+/* === 8. YENİ EKLENEN İLAN VERME FORMU STİLLERİ === */
+/* ================================================= */
+
+/* Formun ana kartının kenarlığını vurguluyoruz */
+#post-ad-form {
+  border-color: var(--red);
+  box-shadow: 0 8px 24px rgba(255, 6, 0, 0.2);
+}
+
+.ad-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Form grupları arası boşluk */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Label ve input arası boşluk */
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--gray-light);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Tüm form elemanları için ortak stil */
+/* (Arama çubuğu ve dil seçiminden esinlenilmiştir) */
+.form-input,
+.form-textarea,
+.form-select {
+  width: 100%;
+  padding: 14px 20px;
+  background: var(--gray-dark); /* Arka planı koyu yaptık */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  color: var(--white);
+  font-size: 15px;
+  font-family: inherit; /* body'den yazı tipini alsın */
+  transition: all 0.3s ease;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  opacity: 1;
+}
+
+/* Tıklama (focus) efekti */
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  outline: none;
+  border-color: var(--red);
+  box-shadow: 0 0 20px rgba(255, 6, 0, 0.3);
+}
+
+/* Select (dropdown) menü stili */
+.form-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Özel dropdown oku (dil seçiminden kopyalandı) */
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-13%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2013l128%20127.9c3.6%203.6%207.8%205.4%2013%205.4s9.4-1.8%2013-5.4L287%2095.2c3.6-3.6%205.4-7.8%205.4-13%200-5-1.8-9.2-5.4-12.8z%22%2F%3E%3C%SGVG%3E');
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+  background-size: 10px;
+}
+
+/* Dosya yükleme butonu için özel stil */
+.form-input[type="file"] {
+  padding: 10px 15px;
+  background-color: var(--gray-medium);
+}
+
+.form-input[type="file"]::file-selector-button {
+  background: var(--red);
+  color: var(--white);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 15px;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.form-input[type="file"]::file-selector-button:hover {
+  opacity: 0.8;
+}
+
+/* Gönder Butonu (Header'daki post-ad-btn'den esinlenilmiştir) */
+.form-submit-btn {
+  background: linear-gradient(135deg, var(--red), #cc0005);
+  padding: 14px 30px;
+  border: none;
+  border-radius: 25px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  display: inline-block;
+  color: var(--white);
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  width: 100%; /* Buton tam genişlik kaplasın */
+}
+
+.form-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 6, 0, 0.4);
+}
+/* ============================================== */
+/* === 9. KATEGORİ SAYFASI İÇERİK STİLLERİ === */
+/* ============================================== */
+
+/* Kategori sayfasının ana içerik kartı (ilan formuna benzer) */
+.category-page-content {
+  background: var(--gray-medium);
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 30px; /* İlan listesiyle arasına boşluk koy */
+  border-color: var(--red); /* Ana sayfa kartları gibi vurgu */
+  box-shadow: 0 8px 24px rgba(255, 6, 0, 0.2);
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: var(--red);
+  font-weight: 600;
+  font-size: 14px;
+}
+.back-link:hover {
+  color: var(--white);
+}
+
+.category-page-title {
+  font-size: 2.5rem; /* 40px */
+  font-weight: 800;
+  margin: 0;
+  color: var(--white);
+  /* Başlık için kırmızı gradyan */
+  background: linear-gradient(135deg, var(--white), var(--red));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.category-page-description {
+  font-size: 1.1rem; /* 17.6px */
+  color: var(--gray-light);
+  margin-top: 10px;
+  line-height: 1.7;
+}
+
+/* Kategori sayfasındaki alt kategori listesi */
+.subcategory-container {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 2px solid var(--gray-dark);
+}
+
+.subcategory-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--red);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+
+.subcategory-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  /* index.html'deki .category-links ul ile aynı */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 8px 15px;
+}
+
+.subcategory-links li a {
+  font-size: 14px;
+  color: var(--white);
+  display: inline-block;
+  padding: 5px 0;
+}
+.subcategory-links li a:hover {
+  color: var(--red);
+}
+
+/* ======================================= */
+/* === 10. İLAN LİSTELEME ALANI STİLLERİ === */
+/* ======================================= */
+
+.listing-container {
+  background: var(--gray-medium);
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.listing-area-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--red);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid var(--red);
+  padding-bottom: 10px;
+}
+
+/* Her bir ilan satırı */
+.listing-item {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--gray-dark);
+  transition: background-color 0.3s ease;
+}
+
+.listing-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.listing-item:first-of-type {
+  padding-top: 0;
+}
+
+.listing-item:hover {
+  background-color: var(--gray-dark);
+  /* Kenar boşluklarını telafi etmek için negatif margin/padding */
+  margin: 0 -25px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.listing-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  object-fit: cover; /* Resmi kırp ve sığdır */
+  flex-shrink: 0; /* Küçülmesin */
+  background-color: var(--black);
+}
+
+.listing-details {
+  flex-grow: 1;
+}
+
+.listing-title {
+  margin: 0;
+  font-size: 1.2rem; /* 19.2px */
+  font-weight: 600;
+}
+
+.listing-title a {
+  color: var(--white);
+}
+.listing-title a:hover {
+  color: var(--red);
+  text-decoration: underline;
+}
+
+.listing-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--red);
+  margin-top: 5px;
+}
+
+.listing-meta {
+  font-size: 0.9rem; /* 14.4px */
+  color: var(--gray-light);
+  margin-top: 8px;
+}
+
+.listing-location {
+  font-weight: 600;
+}
+/* Links Lists */
+.link-list { list-style: none; }
+.link-list li { margin-bottom: 8px; padding-left: 15px; position: relative; }
+.link-list li::before { content: "▸"; position: absolute; left: 0; color: var(--red); font-weight: bold; }
+.link-list a { font-size: 14px; display: inline-block; }
+
+/* Location Links */
+.location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }

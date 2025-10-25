@@ -1,0 +1,611 @@
+/* Varolan tüm CSS kodları... */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* === RENK PALETİ GÜNCELLENDİ === */
+  --black: #000000;
+  /* Güncellendi: Sizin istediğiniz "tam siyah" */
+  --red: #ff0006;
+  /* Güncellendi: Sizin istediğiniz "kırmızı" */
+  --white: #ffffff;
+  /* Değişmedi: Beyaz */
+  /* =============================== */
+
+  --gray-dark: #1a1a1a;
+  /* Koyu tema için gradyan ve bileşenlerde korundu */
+  --gray-medium: #2a2a2a;
+  /* Kartlar ve input alanları için korundu */
+  --gray-light: #e0e0e0;
+  /* Açık renkli metinler için korundu */
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+html,
+body {
+  /* Arka plan gradyanı yeni --black ile başlıyor */
+  background: linear-gradient(135deg, var(--black) 0%, var(--gray-dark) 100%);
+  color: var(--white);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--white);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--red);
+}
+
+/* Vurgu rengi yeni --red oldu */
+
+/* Header */
+.global-header {
+  background: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 20px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow);
+  border-bottom: 2px solid var(--red);
+  /* Vurgu rengi yeni --red oldu */
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.header-logo:hover {
+  transform: none;
+}
+
+.peace-symbol {
+  font-size: 32px;
+  animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.logo-text {
+  /* Logo gradyanı yeni --red ile güncellendi */
+  background: linear-gradient(135deg, var(--white), var(--red));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  font-family: "Lobster", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  font-size: 40px;
+}
+
+.search-container {
+  flex: 1;
+  max-width: 500px;
+  min-width: 250px;
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  padding: 14px 50px 14px 20px;
+  background: var(--gray-medium);
+  border: 2px solid transparent;
+  border-radius: 25px;
+  color: var(--white);
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--red);
+  box-shadow: 0 0 20px rgba(255, 6, 0, 0.3);
+}
+
+/* Gölge yeni --red ile güncellendi */
+.search-icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  pointer-events: none;
+}
+
+.post-ad-btn {
+  /* Buton gradyanı yeni --red ile güncellendi */
+  background: linear-gradient(135deg, var(--red), #cc0005);
+  /* #cc0028 -> #cc0005 (yeni kırmızıya yakın) */
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.post-ad-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 6, 0, 0.4);
+  color: var(--white);
+}
+
+/* Gölge yeni --red ile güncellendi */
+
+.header-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.action-btn {
+  padding: 10px 20px;
+  background: var(--gray-medium);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.action-btn:hover {
+  background: var(--red);
+  border-color: var(--red);
+  transform: translateY(-2px);
+}
+
+/* Hover yeni --red oldu */
+
+/* Main Layout */
+.main-container {
+  max-width: 1400px;
+  margin: 40px auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 250px 1fr 250px;
+  gap: 30px;
+  align-items: start;
+}
+
+/* Sidebar Styling */
+.leftbar,
+.rightbar {
+  position: sticky;
+  top: 120px;
+}
+
+.sidebar-card {
+  background: var(--gray-medium);
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: var(--shadow);
+  margin-bottom: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.sidebar-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(255, 6, 0, 0.2);
+  border-color: rgba(255, 6, 0, 0.3);
+}
+
+/* Gölge ve kenarlık yeni --red ile güncellendi */
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: var(--red);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid var(--red);
+  padding-bottom: 8px;
+}
+
+/* Calendar */
+.calendar {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 4px;
+}
+
+.calendar th,
+.calendar td {
+  padding: 10px 5px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.calendar th {
+  color: var(--red);
+  font-weight: 600;
+  padding-bottom: 10px;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.calendar td {
+  transition: all 0.2s ease;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.05);
+  min-width: 28px;
+  min-height: 28px;
+}
+
+.calendar td:hover {
+  background: rgba(255, 6, 0, 0.3);
+  transform: scale(1.05);
+}
+
+/* Hover yeni --red ile güncellendi */
+.calendar td.today {
+  background: var(--red);
+  font-weight: 700;
+  box-shadow: 0 0 10px rgba(255, 6, 0, 0.6);
+  color: var(--white);
+}
+
+/* "today" yeni --red ile güncellendi */
+
+/* boş hücreler hizalama için görünmez olsun */
+.calendar td.empty {
+  background: transparent !important;
+  cursor: default;
+  box-shadow: none;
+}
+
+/* Links Lists */
+.link-list {
+  list-style: none;
+}
+
+.link-list li {
+  margin-bottom: 8px;
+  padding-left: 15px;
+  position: relative;
+}
+
+.link-list li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--red);
+  font-weight: bold;
+}
+
+.link-list a {
+  font-size: 14px;
+  display: inline-block;
+}
+
+/* Center Categories */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+.category-card {
+  background: var(--gray-medium);
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--red);
+  box-shadow: 0 8px 24px rgba(255, 6, 0, 0.2);
+}
+
+/* Hover yeni --red ile güncellendi */
+
+.category-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--red);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 2px solid var(--red);
+  padding-bottom: 10px;
+}
+
+.category-links ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 8px 15px;
+}
+
+.category-links li {
+  padding: 5px 0;
+  transition: all 0.2s ease;
+}
+
+.category-links a {
+  font-size: 14px;
+  display: inline-block;
+}
+
+.red-dot {
+  color: var(--red);
+  font-weight: bold;
+  animation: pulse 2s infinite;
+  margin-left: 5px;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
+}
+
+/* Charitable Section */
+.charitable-icons {
+  display: flex;
+  gap: 15px;
+  font-size: 28px;
+  margin: 15px 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.animal-icon {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.animal-icon:hover {
+  transform: scale(1.3) rotate(10deg);
+}
+
+/* Location Links */
+.location-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+/* Buttons */
+.job-button {
+  padding: 15px;
+  background: linear-gradient(135deg, var(--gray-medium), var(--gray-dark));
+  border: 2px solid var(--red);
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.job-button:hover {
+  background: var(--red);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 6, 0, 0.4);
+}
+
+/* Hover yeni --red ile güncellendi */
+
+/* Footer */
+.footer {
+  background: var(--gray-dark);
+  padding: 40px;
+  margin-top: 60px;
+  border-top: 3px solid var(--red);
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 25px;
+}
+
+.footer-links a {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 14px;
+}
+
+.copyright {
+  color: var(--gray-light);
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .main-container {
+    grid-template-columns: 1fr;
+  }
+
+  .leftbar,
+  .rightbar {
+    position: static;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .categories-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .global-header {
+    padding: 15px 20px;
+  }
+
+  .header-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .search-container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .main-container {
+    padding: 0 20px;
+    margin-top: 20px;
+  }
+
+  .category-links ul {
+    grid-template-columns: 1fr;
+  }
+
+  .categories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .location-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header-logo {
+    font-size: 24px;
+  }
+
+  .peace-symbol {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .footer-links {
+    gap: 15px;
+    font-size: 12px;
+  }
+}
+
+/* --- FIX: Takvim kartı sığsın diye sol sütunu genişlet --- */
+@media (min-width: 1201px) {
+  .main-container {
+    /* önceki: grid-template-columns: 250px 1fr 250px; */
+    grid-template-columns: 320px 1fr 250px;
+    /* sol 320px, orta 1fr, sağ 250px */
+  }
+}
+
+/* Alternatif: her iki kenar 320px */
+@media (min-width: 1201px) {
+  .main-container {
+    grid-template-columns: 320px 1fr 320px;
+  }
+}
+
+/* YENİ EKLENEN DİL SEÇİM STİLLERİ */
+#langlinks {
+  text-align: center;
+}
+
+.lang-select {
+  width: 100%;
+  padding: 12px 15px;
+  background: var(--gray-dark);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  color: var(--white);
+  font-size: 14px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  /* iOS vb. için varsayılan stili kaldır */
+  -moz-appearance: none;
+  appearance: none;
+  /* Özel dropdown oku ekle (isteğe bağlı) */
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-13%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2013l128%20127.9c3.6%203.6%207.8%205.4%2013%205.4s9.4-1.8%2013-5.4L287%2095.2c3.6-3.6%205.4-7.8%205.4-13%200-5-1.8-9.2-5.4-12.8z%22%2F%3E%3C%SGVG%3E');
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 10px;
+}
+
+.lang-select:focus {
+  outline: none;
+  border-color: var(--red);
+  box-shadow: 0 0 10px rgba(255, 6, 0, 0.3);
+  /* Gölge yeni --red ile güncellendi */
+}
+
+.lang-fallback-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--gray-light);
+}
+
+.lang-fallback-link:hover {
+  color: var(--red);
+}

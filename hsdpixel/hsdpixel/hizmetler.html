@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hizmetler - Modern İlan Sitesi</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <header class="global-header">
+        <div class="header-container">
+            <a class="header-logo" href="index.html">
+                <span class="peace-symbol">☮</span>
+                <span class="logo-text">Craigslist</span>
+            </a>
+
+            <div class="search-container">
+                <input type="text" placeholder="Hizmet ara..." class="search-input" />
+                <span class="search-icon">🔍</span>
+            </div>
+
+            <div class="header-actions">
+                <a class="post-ad-btn" href="#">İlan Ver</a>
+
+
+                <a class="action-btn" href="hesap.html">
+                    <span>👤</span>
+                    <span>Hesap</span>
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <main class="main-container">
+
+        <aside class="leftbar">
+            <div class="sidebar-card">
+                <h4 class="card-title">📅 Etkinlik Takvimi</h4>
+                <table id="cal" class="calendar"></table>
+            </div>
+
+            <div class="sidebar-card">
+                <ul class="link-list">
+                    <li><a href="#">Yardım, SSS, Hukuki Yaptırım</a></li>
+                    <li><a href="#">Sahtekarlıktan Kaçının</a></li>
+                    <li><a href="#">Kişisel Güvenliğiniz İçin</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-card">
+                <ul class="link-list">
+                    <li><a href="#">Craigslist Hakkında</a></li>
+                    <li><a href="#">Craigslist'in En İyileri</a></li>
+                    <li><a href="#">What's New</a></li>
+                    <li><a href="#">Sistem Durumu</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-card">
+                <h4 class="card-title">💝 Craigslist Charitable</h4>
+                <div class="charitable-icons">
+                    <span class="animal-icon">🐷</span>
+                    <span class="animal-icon">🐔</span>
+                    <span class="animal-icon">🐟</span>
+                    <span class="animal-icon">🐱</span>
+                </div>
+                <h4 class="card-title">Craig Newmark Philanthropies</h4>
+            </div>
+        </aside>
+
+        <section class="center">
+
+            <div class="category-card">
+
+                <h3 class="category-title">⚙ Hizmetler</h3>
+
+                <div class="job-filters"
+                    style="margin-bottom: 30px; padding: 25px; background: var(--gray-dark); border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);">
+                    <h4
+                        style="color: var(--red); margin-bottom: 15px; font-weight: 700; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;">
+                        Hizmetleri Filtrele
+                    </h4>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                        <select class="lang-select">
+                            <option value="">Tüm Kategoriler</option>
+                            <option value="bilgisayar">Bilgisayar</option>
+                            <option value="ev">Ev Gereçleri</option>
+                            <option value="nakliye">İşçilik / Nakliye</option>
+                            <option value="kreatif">Kreatif</option>
+                            <option value="ders">Dersler</option>
+                            <option value="otomotiv">Otomotiv</option>
+                        </select>
+                        <select class="lang-select">
+                            <option value="">Tüm Şehirler</option>
+                            <option value="istanbul">İstanbul</option>
+                            <option value="ankara">Ankara</option>
+                            <option value="izmir">İzmir</option>
+                            <option value="bursa">Bursa</option>
+                            <option value="uzaktan">Uzaktan</option>
+                        </select>
+                    </div>
+
+                    <input type="text" placeholder="Anahtar kelime ara (örn: 'logo tasarımı')" class="search-input"
+                        style="border-radius: 10px; margin-bottom: 15px; background: var(--gray-medium);">
+
+                    <a href="#" class="post-ad-btn"
+                        style="width: 100%; text-align: center; box-sizing: border-box;">FİLTRELE</a>
+                </div>
+
+                <div class="job-listings-container">
+
+                    <div class="job-listing-item"
+                        style="background: var(--gray-dark); padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 4px solid var(--red); transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 10px;">
+                            <h4 style="font-size: 18px; font-weight: 700;">
+                                <a href="service-detail.html" style="color: var(--white);">Profesyonel Logo ve Kurumsal
+                                    Kimlik Tasarımı</a>
+                            </h4>
+                            <span style="font-size: 14px; color: var(--gray-light); flex-shrink: 0;">25 Eki</span>
+                        </div>
+                        <div style="font-size: 14px; color: var(--gray-light);">
+                            <span>📍 Uzaktan</span> |
+                            <span>⚙ Kreatif</span>
+                        </div>
+                    </div>
+
+                    <div class="job-listing-item"
+                        style="background: var(--gray-dark); padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 4px solid var(--red); transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 10px;">
+                            <h4 style="font-size: 18px; font-weight: 700;">
+                                <a href="service-detail.html" style="color: var(--white);">Buzdolabı ve Çamaşır Makinesi
+                                    Tamiri (Garantili)</a>
+                            </h4>
+                            <span style="font-size: 14px; color: var(--gray-light); flex-shrink: 0;">25 Eki</span>
+                        </div>
+                        <div style="font-size: 14px; color: var(--gray-light);">
+                            <span>📍 Şişli, İstanbul</span> |
+                            <span>⚙ Ev Gereçleri</span>
+                        </div>
+                    </div>
+
+                    <div class="job-listing-item"
+                        style="background: var(--gray-dark); padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 4px solid var(--red); transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 10px;">
+                            <h4 style="font-size: 18px; font-weight: 700;">
+                                <a href="service-detail.html" style="color: var(--white);">Evden Eve Asansörlü Nakliyat
+                                    Hizmeti</a>
+                            </h4>
+                            <span style="font-size: 14px; color: var(--gray-light); flex-shrink: 0;">24 Eki</span>
+                        </div>
+                        <div style="font-size: 14px; color: var(--gray-light);">
+                            <span>📍 Ankara Geneli</span> |
+                            <span>⚙ İşçilik / Nakliye</span>
+                        </div>
+                    </div>
+
+                    <div class="job-listing-item"
+                        style="background: var(--gray-dark); padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 4px solid var(--red); transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 10px;">
+                            <h4 style="font-size: 18px; font-weight: 700;">
+                                <a href="service-detail.html" style="color: var(--white);">Özel Matematik Dersi
+                                    (Lise/Üniversite)</a>
+                            </h4>
+                            <span style="font-size: 14px; color: var(--gray-light); flex-shrink: 0;">24 Eki</span>
+                        </div>
+                        <div style="font-size: 14px; color: var(--gray-light);">
+                            <span>📍 Kadıköy, İstanbul</span> |
+                            <span>⚙ Dersler</span>
+                        </div>
+                    </div>
+
+                    <div class="job-listing-item"
+                        style="background: var(--gray-dark); padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 4px solid var(--red); transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 10px;">
+                            <h4 style="font-size: 18px; font-weight: 700;">
+                                <a href="service-detail.html" style="color: var(--white);">PC/Laptop Format, Bakım ve
+                                    Virüs Temizleme</a>
+                            </h4>
+                            <span style="font-size: 14px; color: var(--gray-light); flex-shrink: 0;">23 Eki</span>
+                        </div>
+                        <div style="font-size: 14px; color: var(--gray-light);">
+                            <span>📍 Konak, İzmir</span> |
+                            <span>⚙ Bilgisayar</span>
+                        </div>
+                    </div>
+
+                    <div class="pagination" style="text-align: center; margin-top: 40px;">
+                        <a href="#"
+                            style="padding: 10px 18px; background: var(--red); color: var(--white); border-radius: 5px; font-weight: 700; margin: 0 5px; text-decoration: none; box-shadow: var(--shadow);">1</a>
+                        <a href="#"
+                            style="padding: 10px 18px; background: var(--gray-medium); color: var(--white); border-radius: 5px; font-weight: 700; margin: 0 5px; text-decoration: none;">2</a>
+                        <a href="#"
+                            style="padding: 10px 18px; background: var(--gray-medium); color: var(--white); border-radius: 5px; font-weight: 700; margin: 0 5px; text-decoration: none;">3</a>
+                        <a href="#"
+                            style="padding: 10px 18px; background: var(--gray-medium); color: var(--white); border-radius: 5px; font-weight: 700; margin: 0 5px; text-decoration: none;">Sonraki
+                            »</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <aside class="rightbar">
+            <div class="sidebar-card">
+                <h5 class="card-title">🌐 Dil Seçimi</h5>
+                <div id="langlinks">
+                    <select name="lang" id="chlang" class="js-only lang-select">
+                        <option value="?lang=da&amp;setlang=1">dansk</option>
+                        <option value="?lang=de&amp;setlang=1">deutsch</option>
+                        <option value="?lang=en&amp;setlang=1">english</option>
+                        <option value="?lang=es&amp;setlang=1">español</option>
+                        <option value="?lang=fr&amp;setlang=1">français</option>
+                        <option value="?lang=it&amp;setlang=1">italiano</option>
+                        <option value="?lang=pt&amp;setlang=1">português</option>
+                        <option value="?lang=fi&amp;setlang=1">suomi</option>
+                        <option value="?lang=sv&amp;setlang=1">svenska</option>
+                        <option value="?lang=vi&amp;setlang=1">tiếng việt</option>
+                        <option selected value="?lang=tr&amp;setlang=1">türkçe</option>
+                        <option value="?lang=ru&amp;setlang=1">русский</option>
+                        <option value="?lang=zh&amp;setlang=1">中文</option>
+                        <option value="?lang=ja&amp;setlang=1">日本語</option>
+                        <option value="?lang=ko&amp;setlang=1">한국말</option>
+                    </select>
+                </div>
+            </div>
+            <div class="sidebar-card">
+                <h5 class="card-title">🌍 Avrupa</h5>
+                <ul class="location-grid link-list">
+                    <li><a href="#">Amsterdam</a></li>
+                    <li><a href="#">Berlin</a></li>
+                    <li><a href="#">Brüksel</a></li>
+                    <li><a href="#">Budapeşte</a></li>
+                    <li><a href="#">Cote d'Azur</a></li>
+                    <li><a href="#">Dublin</a></li>
+                    <li><a href="#">Edinburgh</a></li>
+                    <li><a href="#">Floransa</a></li>
+                    <li><a href="#">Kopenhag</a></li>
+                    <li><a href="#">Londra</a></li>
+                    <li><a href="#">Münih</a></li>
+                    <li><a href="#">Oslo</a></li>
+                    <li><a href="#">Oxford</a></li>
+                    <li><a href="#">Paris</a></li>
+                    <li><a href="#">Prag</a></li>
+                    <li><a href="#">Roma</a></li>
+                    <li><a href="#">Stokholm</a></li>
+                    <li><a href="#">Venedik/Veneto</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-card">
+                <h5 class="card-title">Amerika/Kanada</h5>
+            </div>
+
+            <div class="sidebar-card">
+                <h5 class="card-title">CL Global</h5>
+            </div>
+
+            <div class="job-button">Ufak İşler</div>
+            <div class="job-button">Özgeçmişler</div>
+        </aside>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#">Yardım</a>
+                <a href="#">Güvenlik</a>
+                <a href="#">Gizlilik</a>
+                <a href="#">Kurallar</a>
+                <a href="#">Hakkında</a>
+                <a href="#">App</a>
+                <a href="#">Sitemap</a>
+            </div>
+            <div class="copyright">&copy; <span id="year"></span> craigslist</div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

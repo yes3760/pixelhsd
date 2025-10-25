@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Özgeçmişler - Modern İlan Sitesi</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+
+
+    <style>
+        /* === 1. TEMEL AYARLAR VE RENK PALETİ === */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            /* === RENK PALETİ === */
+            --black: #000000;
+            --red: #ff0006;
+            --white: #ffffff;
+            /* =============================== */
+            --gray-dark: #1a1a1a;
+            --gray-medium: #2a2a2a;
+            --gray-light: #e0e0e0;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        html,
+        body {
+            background: linear-gradient(135deg, var(--black) 0%, var(--gray-dark) 100%);
+            color: var(--white);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--red);
+        }
+
+        /* === 2. HEADER (ÜST BİLGİ) === */
+        .global-header {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            border-bottom: 2px solid var(--red);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .header-logo:hover {
+            transform: none;
+        }
+
+        .peace-symbol {
+            font-size: 32px;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .logo-text {
+            background: linear-gradient(135deg, var(--white), var(--red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .search-container {
+            flex: 1;
+            max-width: 500px;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 50px 14px 20px;
+            background: var(--gray-medium);
+            border: 2px solid transparent;
+            border-radius: 25px;
+            color: var(--white);
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--red);
+            box-shadow: 0 0 20px rgba(255, 6, 0, 0.3);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            pointer-events: none;
+        }
+
+        .post-ad-btn {
+            background: linear-gradient(135deg, var(--red), #cc0005);
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .post-ad-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 6, 0, 0.4);
+            color: var(--white);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        /* action-btn (Hesap) artık bir link (<a>) */
+        .action-btn {
+            padding: 10px 20px;
+            background: var(--gray-medium);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+
+        .action-btn:hover {
+            background: var(--red);
+            border-color: var(--red);
+            transform: translateY(-2px);
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        /* === 3. ANA İÇERİK (3 SÜTUNLU YAPI) === */
+        .main-container {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 40px;
+            display: grid;
+            gap: 30px;
+            align-items: start;
+            grid-template-columns: 320px 1fr 320px;
+        }
+
+        /* === 4. KENAR ÇUBUKLARI (LEFT & RIGHT) === */
+        .leftbar,
+        .rightbar {
+            position: sticky;
+            top: 120px;
+        }
+
+        .sidebar-card {
+            background: var(--gray-medium);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(255, 6, 0, 0.2);
+            border-color: rgba(255, 6, 0, 0.3);
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--red);
+            padding-bottom: 8px;
+        }
+
+        .sidebar-card h5.card-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--red);
+            padding-bottom: 8px;
+            margin-top: 0;
+        }
+
+        /* Takvim */
+        .calendar {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 4px;
+        }
+
+        .calendar th,
+        .calendar td {
+            padding: 10px 5px;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 13px;
+        }
+
+        .calendar th {
+            color: var(--red);
+            font-weight: 600;
+            padding-bottom: 10px;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        .calendar td {
+            transition: all 0.2s ease;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.05);
+            min-width: 28px;
+            min-height: 28px;
+        }
+
+        .calendar td:hover {
+            background: rgba(255, 6, 0, 0.3);
+            transform: scale(1.05);
+        }
+
+        .calendar td.today {
+            background: var(--red);
+            font-weight: 700;
+            box-shadow: 0 0 10px rgba(255, 6, 0, 0.6);
+            color: var(--white);
+        }
+
+        .calendar td.empty {
+            background: transparent !important;
+            cursor: default;
+            box-shadow: none;
+        }
+
+        /* Link Listeleri (Sol sidebar) */
+        .link-list {
+            list-style: none;
+        }
+
+        .link-list li {
+            margin-bottom: 8px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .link-list li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--red);
+            font-weight: bold;
+        }
+
+        .link-list a {
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        /* Hayırseverlik İkonları */
+        .charitable-icons {
+            display: flex;
+            gap: 15px;
+            font-size: 28px;
+            margin: 15px 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .animal-icon {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .animal-icon:hover {
+            transform: scale(1.3) rotate(10deg);
+        }
+
+        /* Konum Linkleri (Sağ sidebar) */
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        /* Butonlar (Sağ sidebar) */
+        .job-button {
+            padding: 15px;
+            background: linear-gradient(135deg, var(--gray-medium), var(--gray-dark));
+            border: 2px solid var(--red);
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            /* Link olan butonlar için eklendi */
+            display: block;
+            color: var(--white);
+        }
+
+        .job-button:hover {
+            background: var(--red);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 6, 0, 0.4);
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        /* Dil Seçimi (Sağ sidebar) */
+        #langlinks {
+            text-align: center;
+        }
+
+        .lang-select {
+            width: 100%;
+            padding: 12px 15px;
+            background: var(--gray-dark);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: var(--white);
+            font-size: 14px;
+            cursor: pointer;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-13%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2013l128%20127.9c3.6%203.6%207.8%205.4%2013%205.4s9.4-1.8%2013-5.4L287%2095.2c3.6-3.6%205.4-7.8%205.4-13%200-5-1.8-9.2-5.4-12.8z%22%2F%3E%3C%SGVG%3E');
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 10px;
+        }
+
+        .lang-select:focus {
+            outline: none;
+            border-color: var(--red);
+            box-shadow: 0 0 10px rgba(255, 6, 0, 0.3);
+        }
+
+        /* === 5. ORTA İÇERİK (ANA SAYFA KATEGORİLERİ) === */
+        /* (Bu sayfada kullanılmıyor ama stil kütüphanesinde kalsın) */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .category-card {
+            background: var(--gray-medium);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--red);
+            box-shadow: 0 8px 24px rgba(255, 6, 0, 0.2);
+        }
+
+        .category-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid var(--red);
+            padding-bottom: 10px;
+        }
+
+        .category-links ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 8px 15px;
+        }
+
+        .category-links li {
+            padding: 5px 0;
+            transition: all 0.2s ease;
+        }
+
+        .category-links a {
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .red-dot {
+            color: var(--red);
+            font-weight: bold;
+            animation: pulse 2s infinite;
+            margin-left: 5px;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: scale(0.9);
+            }
+        }
+
+        /* === 6. KATEGORİ DETAY SAYFASI STİLLERİ (Bu sayfa için) === */
+        .category-page-content {
+            background: var(--gray-medium);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--red);
+            /* Vurgulu kenar */
+            margin-bottom: 30px;
+            box-shadow: 0 8px 24px rgba(255, 6, 0, 0.2);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--red);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            color: var(--white);
+        }
+
+        .category-page-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 0;
+            background: linear-gradient(135deg, var(--white), var(--red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .category-page-description {
+            font-size: 1.1rem;
+            color: var(--gray-light);
+            margin-top: 10px;
+            line-height: 1.7;
+        }
+
+        .subcategory-container {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 2px solid var(--gray-dark);
+        }
+
+        .subcategory-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            margin-top: 0;
+        }
+
+        .subcategory-links {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 8px 15px;
+        }
+
+        .subcategory-links li a {
+            font-size: 14px;
+            display: inline-block;
+            padding: 5px 0;
+        }
+
+        .subcategory-links li a:hover {
+            color: var(--red);
+        }
+
+        /* İlan Listeleme Alanı */
+        .listing-container {
+            background: var(--gray-medium);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .listing-area-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--red);
+            padding-bottom: 10px;
+        }
+
+        .listing-item {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--gray-dark);
+            transition: background-color 0.3s ease;
+        }
+
+        .listing-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .listing-item:first-of-type {
+            padding-top: 0;
+        }
+
+        .listing-item:hover {
+            background-color: var(--gray-dark);
+            margin: 0 -25px;
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+
+        .listing-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            object-fit: cover;
+            flex-shrink: 0;
+            background-color: var(--black);
+        }
+
+        .listing-details {
+            flex-grow: 1;
+        }
+
+        .listing-title {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .listing-title a {
+            color: var(--white);
+        }
+
+        .listing-title a:hover {
+            color: var(--red);
+            text-decoration: underline;
+        }
+
+        .listing-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--red);
+            margin-top: 5px;
+        }
+
+        .listing-meta {
+            font-size: 0.9rem;
+            color: var(--gray-light);
+            margin-top: 8px;
+        }
+
+        .listing-location {
+            font-weight: 600;
+        }
+
+
+        /* === 7. FOOTER (ALT BİLGİ) === */
+        .footer {
+            background: var(--gray-dark);
+            padding: 40px;
+            margin-top: 60px;
+            border-top: 3px solid var(--red);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        .footer-links a {
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+        }
+
+        .copyright {
+            color: var(--gray-light);
+            font-size: 14px;
+        }
+
+        /* === 8. MOBİL UYUMLULUK === */
+        @media (max-width: 1200px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+
+            .leftbar,
+            .rightbar {
+                position: static;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .global-header {
+                padding: 15px 20px;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .search-container {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .main-container {
+                padding: 0 20px;
+                margin-top: 20px;
+            }
+
+            .category-links ul {
+                grid-template-columns: 1fr;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-logo {
+                font-size: 24px;
+            }
+
+            .peace-symbol {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .footer-links {
+                gap: 15px;
+                font-size: 12px;
+            }
+        }
+
+        @media (min-width: 1201px) {
+            .main-container {
+                grid-template-columns: 320px 1fr 320px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header class="global-header">
+        <div class="header-container">
+            <a class="header-logo" href="index.html">
+                <span class="peace-symbol">☮</span>
+                <span class="logo-text">Craigslist</span>
+            </a>
+
+            <div class="search-container">
+                <input type="text" placeholder="Özgeçmiş Ara..." class="search-input" />
+                <span class="search-icon">🔍</span>
+            </div>
+
+            <div class="header-actions">
+                <a class="post-ad-btn" href="ilan-ver.html">İlan Ver</a>
+                <a class="action-btn" href="hesap.html">
+                    <span>👤</span>
+                    <span>Hesap</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+
+        <aside class="leftbar">
+            <div class="sidebar-card">
+                <h4 class="card-title">📅 Etkinlik Takvimi</h4>
+                <table id="cal" class="calendar"></table>
+            </div>
+
+            <div class="sidebar-card">
+                <ul class="link-list">
+                    <li><a href="#">Yardım, SSS, Hukuki Yaptırım</a></li>
+                    <li><a href="#">Sahtekarlıktan Kaçının</a></li>
+                    <li><a href="#">Kişisel Güvenliğiniz İçin</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-card">
+                <ul class="link-list">
+                    <li><a href="#">Craigslist Hakkında</a></li>
+                    <li><a href="#">Craigslist'in En İyileri</a></li>
+                    <li><a href="#">What's New</a></li>
+                    <li><a href="#">Sistem Durumu</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-card">
+                <h4 class="card-title">💝 Craigslist Charitable</h4>
+                <div class="charitable-icons">
+                    <span class="animal-icon">🐷</span>
+                    <span class="animal-icon">🐔</span>
+                    <span class="animal-icon">🐟</span>
+                    <span class="animal-icon">🐱</span>
+                </div>
+                <h4 class="card-title">Craig Newmark Philanthropies</h4>
+            </div>
+        </aside>
+
+        <section class="center">
+
+            <div class="category-page-content">
+                <a href="index.html" class="back-link">&larr; Ana Sayfaya Geri Dön</a>
+
+                <h1 class="category-page-title">📄 Özgeçmişler</h1>
+
+                <p class="category-page-description">
+                    İş arayan profesyonellerin, serbest çalışanların ve uzmanların özgeçmişleri burada listelenir.
+                </p>
+
+                <div class="subcategory-container">
+                    <h4 class="subcategory-title">Özgeçmiş Kategorileri</h4>
+                    <ul class="subcategory-links">
+                        <li><a href="#">Yazılım / Web</a></li>
+                        <li><a href="#">Tasarım / Medya</a></li>
+                        <li><a href="#">Pazarlama / Satış</a></li>
+                        <li><a href="#">Yönetim / Ofis</a></li>
+                        <li><a href="#">Sağlık</a></li>
+                        <li><a href="#">Eğitim</a></li>
+                        <li><a href="#">Mühendislik</a></li>
+                        <li><a href="#">Diğer</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="listing-container" style="margin-top: 30px;">
+                <h3 class="listing-area-title">Son Eklenen Özgeçmişler</h3>
+
+                <div class="listing-item">
+                    <img src="https://via.placeholder.com/100x100.png?text=CV" alt="Profil Resmi" class="listing-image"
+                        style="border-radius: 50%;">
+                    <div class="listing-details">
+                        <h4 class="listing-title"><a href="#">Senior Full-Stack Developer (Python/React)</a></h4>
+                        <p class="listing-price">Proje Bazlı / Tam Zamanlı</p>
+                        <p class="listing-meta">
+                            <span class="listing-date">25 Eki</span> -
+                            <span class="listing-location">İstanbul (Uzaktan Çalışabilir)</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="listing-item">
+                    <img src="https://via.placeholder.com/100x100.png?text=CV" alt="Profil Resmi" class="listing-image"
+                        style="border-radius: 50%;">
+                    <div class="listing-details">
+                        <h4 class="listing-title"><a href="#">Grafik Tasarımcı & Sosyal Medya Uzmanı</a></h4>
+                        <p class="listing-price">Freelance / Proje Bazlı</p>
+                        <p class="listing-meta">
+                            <span class="listing-date">24 Eki</span> -
+                            <span class="listing-location">Ankara</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="listing-item">
+                    <img src="https://via.placeholder.com/100x100.png?text=CV" alt="Profil Resmi" class="listing-image"
+                        style="border-radius: 50%;">
+                    <div class="listing-details">
+                        <h4 class="listing-title"><a href="#">Tecrübeli İngilizce Öğretmeni (Online Ders)</a></h4>
+                        <p class="listing-price">Ders Saati: 700 ₺</p>
+                        <p class="listing-meta">
+                            <span class="listing-date">23 Eki</span> -
+                            <span class="listing-location">Uzaktan</span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <aside class="rightbar">
+
+            <div class="sidebar-card">
+                <h5 class="card-title">🌐 Dil Seçimi</h5>
+                <div id="langlinks">
+                    <select name="lang" id="chlang" class="js-only lang-select">
+                        <option value="?lang=da&amp;setlang=1">dansk</option>
+                        <option value="?lang=de&amp;setlang=1">deutsch</option>
+                        <option value="?lang=en&amp;setlang=1">english</option>
+                        <option value="?lang=es&amp;setlang=1">español</option>
+                        <option value="?lang=fr&amp;setlang=1">français</option>
+                        <option value="?lang=it&amp;setlang=1">italiano</option>
+                        <option value="?lang=pt&amp;setlang=1">português</option>
+                        <option value="?lang=fi&amp;setlang=1">suomi</option>
+                        <option value="?lang=sv&amp;setlang=1">svenska</option>
+                        <option value="?lang=vi&amp;setlang=1">tiếng việt</option>
+                        <option selected value="?lang=tr&amp;setlang=1">türkçe</option>
+                        <option value="?lang=ru&amp;setlang=1">русский</option>
+                        <option value="?lang=zh&amp;setlang=1">中文</option>
+                        <option value="?lang=ja&amp;setlang=1">日本語</option>
+                        <option value="?lang=ko&amp;setlang=1">한국말</option>
+                    </select>
+                </div>
+            </div>
+            <div class="sidebar-card">
+                <h5 class="card-title">🌍 Avrupa</h5>
+                <ul class="location-grid link-list">
+                    <li><a href="#">Amsterdam</a></li>
+                    <li><a href="#">Berlin</a></li>
+                    <li><a href="#">Brüksel</a></li>
+                    <li><a href="#">Budapeşte</a></li>
+                    <li><a href="#">Cote d'Azur</a></li>
+                    <li><a href="#">Dublin</a></li>
+                    <li><a href="#">Edinburgh</a></li>
+                    <li><a href="#">Floransa</a></li>
+                    <li><a href="#">Kopenhag</a></li>
+                    <li><a href="#">Londra</a></li>
+                    <li><a href="#">Münih</a></li>
+                    <li><a href="#">Oslo</a></li>
+                    <li><a href="#">Oxford</a></li>
+                    <li><a href="#">Paris</a></li>
+                    <li><a href="#">Prag</a></li>
+                    <li><a href="#">Roma</a></li>
+                    <li><a href="#">Stokholm</a></li>
+                    <li><a href="#">Venedik/Veneto</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-card">
+                <h5 class="card-title">Amerika/Kanada</h5>
+            </div>
+
+            <div class="sidebar-card">
+                <h5 class="card-title">CL Global</h5>
+            </div>
+
+            <a href="ufak-isler.html" class="job-button">Ufak İşler</a>
+            <a href="ozgecmis.html" class="job-button">Özgeçmişler</a>
+        </aside>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#">Yardım</a>
+                <a href="#">Güvenlik</a>
+                <a href="#">Gizlilik</a>
+                <a href="#">Kurallar</a>
+                <a href="#">Hakkında</a>
+                <a href="#">App</a>
+                <a href="#">Sitemap</a>
+            </div>
+            <div class="copyright">&copy; <span id="year"></span> craigslist</div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
